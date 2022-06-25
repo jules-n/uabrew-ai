@@ -1,2 +1,9 @@
 server:
   port: 9092
+uabrew:
+  warehouse:
+    host: ${UABREW_WAREHOUSE_HOST:localhost}
+    port: ${UABREW_WAREHOUSE_PORT:9096}
+  bar:
+    host: ${UABREW_BAR_HOST:localhost}
+    port: ${UABREW_BAR_PORT:9094}

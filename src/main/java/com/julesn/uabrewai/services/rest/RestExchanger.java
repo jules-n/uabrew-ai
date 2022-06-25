@@ -15,7 +15,7 @@ public class RestExchanger {
         restTemplate = new RestTemplate();
     }
 
-    public <T, O> T fetch(String host, String port, Class<T> requestClass, @Nullable List<String> pathParams, O request) {
+    public <T, O> T fetch(String host, String port, Class<T> requestClass, @Nullable List<String> pathParams, @Nullable O request) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("http://");
         stringBuilder.append(host);
@@ -27,6 +27,7 @@ public class RestExchanger {
                 stringBuilder.append(param);
             });
         }
-        return restTemplate.getForObject(stringBuilder.toString(), requestClass, request);
+        return request == null ? restTemplate.getForObject(stringBuilder.toString(), requestClass) :
+        restTemplate.getForObject(stringBuilder.toString(), requestClass, request);
     }
 }
